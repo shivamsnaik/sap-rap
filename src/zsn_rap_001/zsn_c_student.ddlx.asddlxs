@@ -1,0 +1,70 @@
+@Metadata.layer: #CORE
+// Metadata Extensions are evaluated/processed based on the following layers ( descending order of priority  ):
+// 1. #CUSTOMER     - Customer
+// 2. #PARTNER      - Partner
+// 3. #INDUSTRY     - Industry Solutions
+// 4. #LOCALIZATION - SAP Application Component
+// 5. #CORE         - SAP NetWeaver
+
+@Search.searchable: true
+annotate view ZSN_C_STUDENT with
+{
+  @UI: {
+    lineItem: [{ position: 10, label: 'Student ID' }],
+    identification: [{ position: 10, label: 'Student ID' }]
+  }
+  Id;
+  
+  @UI: {
+    lineItem: [{ position: 20, label: 'First Name' }],
+    identification: [{ position: 20, label: 'First Name' }],
+        selectionField: [{ position: 20 }]
+  }
+  @Search.defaultSearchElement: true
+  FirstName;
+  
+  @UI: {
+    lineItem: [{ position: 30, label: 'Last Name' }],
+    identification: [{ position: 30, label: 'Last Name' }],
+    selectionField: [{ position: 30 }]
+  }
+  @Search.defaultSearchElement: true
+  LastName;
+  
+  @UI: {
+     lineItem: [{ position: 40, label: 'Age' }],
+     identification: [{ position: 40, label: 'Age' }]
+   }
+  Age;
+  
+  @UI: {
+    lineItem: [{ position: 50, label: 'Course Name' }],
+    identification: [{ position: 50, label: 'Course Name' }]
+  }
+  Course;
+  
+  @UI: {
+      lineItem: [{ position: 60, label: 'Course Duration' }],
+      identification: [{ position: 60, label: 'Course Duration' }]
+    }
+  CourseDuration;
+  
+  @UI: {
+      lineItem: [{ position: 70, label: 'Student Status' }],
+      identification: [{ position: 70, label: 'Student Status' }]
+    }
+  Status;
+  
+  @UI: {
+      lineItem: [{ position: 80, label: 'Gender' }],
+      identification: [{ position: 80, label: 'Gender' }]
+    }
+  Gender;
+  
+  @UI: {
+      lineItem: [{ position: 90, label: 'Date of Birth' }],
+      identification: [{ position: 90, label: 'Date of Birth' }]
+    }
+  Dob;
+
+}
