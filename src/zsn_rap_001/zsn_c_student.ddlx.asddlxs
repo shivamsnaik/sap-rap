@@ -10,8 +10,7 @@
 annotate view ZSN_C_STUDENT with
 {
   @UI: {
-    lineItem: [{ position: 10, label: 'Student ID' }],
-    identification: [{ position: 10, label: 'Student ID' }]
+    hidden: true
   }
   Id;
   

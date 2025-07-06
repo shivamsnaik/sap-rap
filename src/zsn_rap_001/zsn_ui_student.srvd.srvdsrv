@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definiiton for Student Entity'
+define service ZSN_UI_STUDENT {
+  expose ZSN_C_STUDENT;
+}
