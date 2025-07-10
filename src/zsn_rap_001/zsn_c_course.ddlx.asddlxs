@@ -1,0 +1,42 @@
+@Metadata.layer: #CUSTOMER
+
+@UI:{ 
+ headerInfo: { 
+    typeName: 'Course',
+    typeNamePlural: 'Courses',
+    title: { label: 'Course List', type: #STANDARD }
+ }
+}
+annotate entity ZSN_C_COURSE
+    with 
+{
+
+@UI.facet: [
+        { position: 10, label: 'Courses', type: #IDENTIFICATION_REFERENCE, purpose: #STANDARD }
+]
+
+    @UI.hidden: true
+    CourseId;
+    @UI:{ 
+     lineItem: [{ type: #STANDARD, position: 10, label: 'Course Name' }],
+     identification: [{ label: 'Course Name', position: 10 }]
+    }
+    CourseName;
+    
+    @UI:{ 
+        lineItem: [{ position: 20, label: 'Course Duration' }],
+        identification: [{ position: 20, label: 'Course Duration' }]
+    }
+    CourseDuration;
+    
+    @UI.hidden: true
+    @UI:{ 
+        identification: [{ position: 30, label: 'Department ID' }]
+    }
+    DepartmentId;
+    @UI:{ 
+        identification: [{ position: 40, label: 'Student ID' }]
+    }
+    @UI.hidden: true
+    StudentId;
+}

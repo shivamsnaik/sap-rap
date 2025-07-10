@@ -7,8 +7,21 @@
 // 5. #CORE         - SAP NetWeaver
 
 @Search.searchable: true
+
+@UI: { 
+  headerInfo: { 
+    typeName: 'Student',
+    typeNamePlural: 'Students',
+    title: { type: #STANDARD, label: 'Student Details', value: 'FirstName' }
+  }
+}
 annotate view ZSN_C_STUDENT with
 {
+  @UI.facet: [
+    {id: 'Student', purpose: #STANDARD, type : #IDENTIFICATION_REFERENCE, label: 'Student Details', position: 10 },
+    { id: 'Courses', purpose: #STANDARD, type: #LINEITEM_REFERENCE, label: 'Course List', position: 20, targetElement: '_Course' }
+  ]
+
   @UI: {
     hidden: true
   }

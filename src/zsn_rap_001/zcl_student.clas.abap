@@ -20,7 +20,7 @@ CLASS zcl_student IMPLEMENTATION.
 
   METHOD if_oo_adt_classrun~main.
     delete_old_student_data( ).
-    insert_student_data( ).
+    "insert_student_data( ).
   ENDMETHOD.
 
   METHOD insert_student_data.

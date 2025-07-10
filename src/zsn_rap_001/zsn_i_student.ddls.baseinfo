@@ -6,7 +6,9 @@
 "ZSN_STUDENT"
 ],
 "ASSOCIATED":
-[],
+[
+"ZSN_I_COURSE"
+],
 "BASE":
 [],
 "ANNO_REF":

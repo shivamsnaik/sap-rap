@@ -1,0 +1,85 @@
+managed implementation in class zbp_sn_i_student unique;
+strict ( 2 );
+
+define behavior for ZSN_I_STUDENT alias Student
+implementation in class zbp_sn_i_student unique
+/*   TABLE DESCRIPTION   */
+persistent table zsn_student
+
+/*  DATA CONSISTENCY SETTINGS   */
+// Ensures data consistency by providing safe-concurrent operations.
+lock master
+// The etag master is used to ensure that the data is not changed by another user while the current user is editing it.
+//etag master <field_name>
+/*  DATA CONSISTENCY SETTINGS   */
+
+/*AUTHORIZATION SETTINGS*/
+authorization master ( instance )
+
+/*  DETAILS ABOUT THE OPERATIONS ALLOWED AND ACTIONS PERFORMED  */
+{
+
+  /* WHAT DATABASE OPERATIONS ARE SUPPORTED */
+  create ( authorization : global );
+  update;
+  delete;
+
+  /* ASSOCIATIONS */
+  association _Course { create; }
+
+  //In order to auto-generate the UUID, create a numbering that is managed by SAP for autogeneration
+  // Set UUID to readonly in order to not be added by the user. It is auto-generated.
+  field ( readonly : update, numbering : managed ) Id;
+
+  field ( mandatory )
+  FirstName,
+  LastName,
+  Course;
+
+  //The behaviour definition needs to know how the zsn_student Dictionary table fields are mapped with ZSN_I_STUDENT entity.
+  mapping for zsn_student
+    {
+      Id             = id;
+      FirstName      = first_name;
+      LastName       = last_name;
+      Age            = age;
+      Course         = course;
+      CourseDuration = course_duration;
+      Status         = status;
+      Gender         = gender;
+      Dob            = dob;
+      courseid       = course_id;
+    }
+}
+
+define behavior for ZSN_I_COURSE alias Course
+implementation in class zbp_sn_i_course unique
+persistent table zsn_course
+
+//etag dependent by _Student
+lock dependent by _Student
+
+authorization dependent by _Student
+{
+
+  field ( readonly : update ) StudentId;
+  field (readonly: update ) CourseId;
+
+  field (mandatory)
+  courseName,
+  courseDuration;
+
+  update;
+  delete;
+
+  association _Student;
+
+  mapping for zsn_course
+    {
+      CourseId       = course_id;
+      CourseName     = course_name;
+      CourseDuration = course_duration;
+      StudentId      = student_id;
+      DepartmentId   = department_id;
+    }
+}

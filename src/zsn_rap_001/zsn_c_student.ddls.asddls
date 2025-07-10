@@ -30,5 +30,8 @@ as projection on ZSN_I_STUDENT as Student
     @EndUserText.label: 'Gender'
     Gender,
     @EndUserText.label: 'Date of Birth'
-    Dob
+    Dob,
+    
+    //Associations
+    _Course: redirected to composition child ZSN_C_COURSE
 }

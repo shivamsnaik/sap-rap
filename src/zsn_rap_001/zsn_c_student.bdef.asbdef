@@ -1,0 +1,19 @@
+projection;
+strict ( 2 );
+
+define behavior for ZSN_C_STUDENT alias Student
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Course { create; }
+}
+
+define behavior for ZSN_C_COURSE alias Course
+{
+    use update;
+    use delete;
+
+    use association _Student {}
+}
